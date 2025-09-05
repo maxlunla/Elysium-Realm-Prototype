@@ -57,8 +57,18 @@ public class SkillMenuController : MonoBehaviour
 				if (entry.nameText != null) entry.nameText.text = skill.displayName;
 				if (entry.tpText != null) entry.tpText.text = skill.tpCost.ToString() + "TP";
 				if (entry.mpText != null) entry.mpText.text = skill.mpCost.ToString() + "MP";
-				if (entry.cooldownText != null) entry.cooldownText.text =
-					skill.cooldown > 0 ? skill.cooldown.ToString() : "";
+				if (entry.cooldownText != null)
+				{
+					if (skill.cooldown > 0)
+					{
+						string suffix = skill.cooldown == 1 ? " Turn" : " Turns";
+						entry.cooldownText.text = skill.cooldown.ToString() + suffix;
+					}
+					else
+					{
+						entry.cooldownText.text = "";
+					}
+				}
 			}
 		}
 

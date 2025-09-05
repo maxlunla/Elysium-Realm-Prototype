@@ -24,6 +24,7 @@ public class SkillData
 	public int tpCost;				// Technical points cost
 	public int cooldown;			// Cooldown in turns
 	public string type;             // "Physical", "Magical", "Attack", "Buff"
+	public bool isCooldown = false;			// True if skill is on cooldown
 
 	public enum TargetType
 	{
@@ -31,6 +32,7 @@ public class SkillData
 		Single_Ally,
 		Multiple_Enemies,
 		Multiple_Allies,
+		Self,
 	}
 	public TargetType targetType;
 }

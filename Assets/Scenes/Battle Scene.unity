@@ -372,6 +372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
       value: 3 Turns
@@ -502,10 +506,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 48, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53491982
 MonoBehaviour:
@@ -646,6 +650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
       value: 5 Turns
@@ -720,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8940272283079036453, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000038146973
+      value: -0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 8940272283079036453, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1033,10 +1041,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 26, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127524036
 MonoBehaviour:
@@ -1901,7 +1909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7493273686718521005, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.5000038
+      value: -0.5000019
       objectReference: {fileID: 0}
     - target: {fileID: 7577318082966678672, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3108,7 +3116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3458,7 +3466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4058,10 +4066,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637332992
 MonoBehaviour:
@@ -4269,10 +4277,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663115798
 MonoBehaviour:
@@ -4472,7 +4480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4981,6 +4989,10 @@ PrefabInstance:
     - target: {fileID: 3843015521363656788, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_Name
       value: Skill 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
@@ -6073,10 +6085,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 59, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858926763
 MonoBehaviour:
@@ -6310,9 +6322,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -6.000046
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.9999847
+      objectReference: {fileID: 0}
     - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
-      value: 5 Turns
+      value: 50 Turns
+      objectReference: {fileID: 0}
+    - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727257913101958459, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
@@ -6494,7 +6518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.009000001, y: 0.90200007}
   m_AnchorMax: {x: 0.17, y: 0.98600006}
-  m_AnchoredPosition: {x: 0, y: -0.11868286}
+  m_AnchoredPosition: {x: 0, y: -0.11871338}
   m_SizeDelta: {x: 0.0001, y: 0.23732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889711624
@@ -6719,7 +6743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7631,10 +7655,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 103, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052747750
 MonoBehaviour:
@@ -8296,7 +8320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7493273686718521005, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.49999905
+      value: -0.4999981
       objectReference: {fileID: 0}
     - target: {fileID: 7577318082966678672, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -10833,14 +10857,75 @@ MonoBehaviour:
   currentHP: 150
   maxMP: 150
   currentMP: 150
-  ATK: 50
-  DEF: 50
-  MAT: 50
-  MDF: 50
-  AGI: 50
-  LUK: 50
-  commands: []
-  skills: []
+  ATK: 8
+  DEF: 2
+  MAT: 2
+  MDF: 2
+  AGI: 8
+  LUK: 8
+  commands:
+  - id: Attack
+    displayName: Attack
+    available: 1
+  - id: Guard
+    displayName: Guard
+    available: 1
+  - id: Skills
+    displayName: Skills
+    available: 1
+  - id: Items
+    displayName: Items
+    available: 0
+  - id: Escape
+    displayName: Escape
+    available: 1
+  skills:
+  - id: Assassination Mark
+    displayName: Assassination Mark
+    description: Deal 50% ATK to single enemy, give Assassination Mark for 3 turns.
+    mpCost: 5
+    tpCost: 2
+    cooldown: 3
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 0
+  - id: Wolf Fang
+    displayName: Wolf Fang
+    description: 'Deal 126% ATK to single enemy. '
+    mpCost: 6
+    tpCost: 2
+    cooldown: 1
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 0
+  - id: Headhunt
+    displayName: Headhunt
+    description: Increase critical chance by 15% and critical damage by 50% for 2
+      turns.
+    mpCost: 10
+    tpCost: 2
+    cooldown: 3
+    type: '[Buff]'
+    isCooldown: 0
+    targetType: 1
+  - id: Bloodpaint
+    displayName: Bloodpaint
+    description: Deal 328% ATK to single enemy.
+    mpCost: 18
+    tpCost: 5
+    cooldown: 5
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 0
+  - id: Smoke Bomb
+    displayName: Smoke Bomb
+    description: Deal 102% ATK to all enemies. 50% Blind for 2 turns.
+    mpCost: 12
+    tpCost: 3
+    cooldown: 4
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 2
   states: []
   hpCanvas: {fileID: 0}
   cursor: {fileID: 0}
@@ -10902,68 +10987,75 @@ MonoBehaviour:
   currentHP: 100
   maxMP: 200
   currentMP: 200
-  ATK: 50
-  DEF: 50
-  MAT: 50
-  MDF: 50
-  AGI: 50
-  LUK: 50
+  ATK: 3
+  DEF: 2
+  MAT: 9
+  MDF: 6
+  AGI: 4
+  LUK: 6
   commands:
   - id: Attack
-    displayName: Wendy 1
+    displayName: Attack
     available: 1
   - id: Guard
-    displayName: Wendy 2
+    displayName: Guard
     available: 1
   - id: Skills
-    displayName: Wendy 3
+    displayName: Skills
     available: 1
   - id: Items
-    displayName: Wendy 4
+    displayName: Items
     available: 0
   - id: Escape
-    displayName: Wendy 5
+    displayName: Escape
     available: 1
   skills:
-  - id: Wendy Skill 0
-    displayName: Wendy Skill 0
-    description: Wendy Skill 0
-    mpCost: 0
-    tpCost: 0
-    cooldown: 0
-    type: 0
-    targetType: 0
-  - id: Wendy Skill 1
-    displayName: Wendy Skill 1
-    description: Wendy Skill 1
-    mpCost: 1
-    tpCost: 1
+  - id: Fireball
+    displayName: Fireball
+    description: Deal 125% MAT to single enemy. 50% Burn for 2 turns.
+    mpCost: 13
+    tpCost: 2
     cooldown: 1
-    type: 1
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
     targetType: 0
-  - id: Wendy Skill 2
-    displayName: Wendy Skill 2
-    description: Wendy Skill 2
-    mpCost: 2
+  - id: Ice Bolt
+    displayName: Ice Bolt
+    description: Deal 95% MAT to single enemy. 50% Freeze for 1 turn.
+    mpCost: 17
     tpCost: 2
     cooldown: 2
-    type: 2
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
     targetType: 0
-  - id: Wendy Skill 3
-    displayName: Wendy Skill 3
-    description: Wendy Skill 3
-    mpCost: 3
+  - id: Thunder Storm
+    displayName: Thunder Storm
+    description: Deal 100% MAT damage to all enemies each turn for 3 turns.
+    mpCost: 22
+    tpCost: 5
+    cooldown: 5
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
+    targetType: 2
+  - id: Magic Shield
+    displayName: Magic Shield
+    description: Reduce damage taken by 20% by consuming 1% of current MP per hit
+      everytime take damage.
+    mpCost: 20
     tpCost: 3
-    cooldown: 3
-    type: 3
-    targetType: 0
-  - id: Wendy Skill 4
-    displayName: Wendy Skill 4
-    description: Wendy Skill 4
-    mpCost: 4
+    cooldown: 1
+    type: '[Buff]'
+    isCooldown: 0
+    targetType: 1
+  - id: Elemental Blast
+    displayName: Elemental Blast
+    description: Deal 350% MAT to single enemy. If Thunder Storm is active, change
+      to attack all enemies.
+    mpCost: 28
     tpCost: 4
     cooldown: 4
-    type: 4
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
     targetType: 0
   states: []
   hpCanvas: {fileID: 0}
@@ -13480,7 +13572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -13931,12 +14023,12 @@ MonoBehaviour:
   currentHP: 200
   maxMP: 100
   currentMP: 100
-  ATK: 50
-  DEF: 50
-  MAT: 50
-  MDF: 50
-  AGI: 50
-  LUK: 50
+  ATK: 6
+  DEF: 6
+  MAT: 3
+  MDF: 4
+  AGI: 5
+  LUK: 6
   commands:
   - id: Attack
     displayName: Attack
@@ -13954,46 +14046,55 @@ MonoBehaviour:
     displayName: Escape
     available: 1
   skills:
-  - id: 00000
-    displayName: 00000
-    description: 00000
-    mpCost: 0
-    tpCost: 0
-    cooldown: 0
-    type: 0
-    targetType: 0
-  - id: 11111
-    displayName: 11111
-    description: 11111
-    mpCost: 1
-    tpCost: 1
-    cooldown: 1
-    type: 1
-    targetType: 0
-  - id: 22222
-    displayName: 22222
-    description: 22222
-    mpCost: 2
+  - id: Double Slash
+    displayName: Double Slash
+    description: Deal 130% ATK to single enemy.
+    mpCost: 7
     tpCost: 2
-    cooldown: 2
-    type: 2
+    cooldown: 1
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
     targetType: 0
-  - id: 33333
-    displayName: 33333
-    description: 33333
-    mpCost: 3
+  - id: 'Triple Slash '
+    displayName: 'Triple Slash '
+    description: 'Deal 210% ATK to single enemy. Combo: +20% dmg if used after Double
+      Slash.'
+    mpCost: 13
     tpCost: 3
-    cooldown: 3
-    type: 3
+    cooldown: 1
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
     targetType: 0
-  - id: 4444
-    displayName: 4444
-    description: 4444
-    mpCost: 4
+  - id: Finisher Slash
+    displayName: Finisher Slash
+    description: 'Deal 275% ATK to single enemy. Combo: +20% dmg if used after Triple
+      Slash and receive 2 Combo stack.'
+    mpCost: 15
+    tpCost: 4
+    cooldown: 2
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 0
+  - id: Brave
+    displayName: Brave
+    description: Increase party damage dealing 5% and reduce damage taken 5% for
+      3 turns.
+    mpCost: 10
+    tpCost: 2
+    cooldown: 3
+    type: '[Buff]'
+    isCooldown: 0
+    targetType: 3
+  - id: Wide Slash
+    displayName: Wide Slash
+    description: 'Deal 200% ATK to all enemies. Combo: Deal additional hit if used
+      after Finisher Slash and receive 1 Combo stack per enemy hit.'
+    mpCost: 14
     tpCost: 4
     cooldown: 4
-    type: 4
-    targetType: 0
+    type: '[Attack] - [Physical]'
+    isCooldown: 0
+    targetType: 2
   states: []
   hpCanvas: {fileID: 0}
   cursor: {fileID: 0}
@@ -14143,10 +14244,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886463942
 MonoBehaviour:
@@ -14218,10 +14319,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 81, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893838960
 MonoBehaviour:
@@ -14318,7 +14419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.37300003, y: 0.021677833}
   m_AnchorMax: {x: 0.518, y: 0.32700002}
-  m_AnchoredPosition: {x: -0.000045776367, y: 0.015625}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.015625}
   m_SizeDelta: {x: -0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905558541
@@ -15109,10 +15210,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 92, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032743282
 MonoBehaviour:
@@ -15169,7 +15270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035449028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15264,14 +15365,75 @@ MonoBehaviour:
   currentHP: 150
   maxMP: 150
   currentMP: 150
-  ATK: 50
-  DEF: 50
-  MAT: 50
-  MDF: 50
-  AGI: 50
-  LUK: 50
-  commands: []
-  skills: []
+  ATK: 4
+  DEF: 7
+  MAT: 4
+  MDF: 6
+  AGI: 3
+  LUK: 6
+  commands:
+  - id: Attack
+    displayName: Attack
+    available: 1
+  - id: Guard
+    displayName: Guard
+    available: 1
+  - id: Skills
+    displayName: Skills
+    available: 1
+  - id: Items
+    displayName: Items
+    available: 0
+  - id: Escape
+    displayName: Escape
+    available: 1
+  skills:
+  - id: Vine Surge
+    displayName: Vine Surge
+    description: 'Deal 50% MAT to single enemy. 20% Bleeding for 2 turns. '
+    mpCost: 8
+    tpCost: 2
+    cooldown: 1
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
+    targetType: 0
+  - id: Rejuvenation
+    displayName: Rejuvenation
+    description: Recover HP equal to 10% MAT + 2% of Max HP for 3 turns to all allies.
+    mpCost: 15
+    tpCost: 2
+    cooldown: 5
+    type: '[Buff]'
+    isCooldown: 0
+    targetType: 3
+  - id: Grace of the Land
+    displayName: Grace of the Land
+    description: Deal 100% MAT damage to all enemies and recover HP equal to 45%
+      MAT to all allies.
+    mpCost: 30
+    tpCost: 5
+    cooldown: 4
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
+    targetType: 2
+  - id: Flow of the River
+    displayName: Flow of the River
+    description: Remove all debuffs from all allies.
+    mpCost: 27
+    tpCost: 3
+    cooldown: 3
+    type: '[Buff]'
+    isCooldown: 0
+    targetType: 3
+  - id: "Forest\u2019s Wraith"
+    displayName: "Forest\u2019s Wraith"
+    description: Deal 100% of MAT to single enemy, give Forest Wraith for 2 turns.
+    mpCost: 30
+    tpCost: 5
+    cooldown: 5
+    type: '[Attack] - [Magical]'
+    isCooldown: 0
+    targetType: 0
   states: []
   hpCanvas: {fileID: 0}
   cursor: {fileID: 0}
@@ -15704,10 +15866,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628430492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 37, y: -6.0148787}
+  m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117049286
 MonoBehaviour:
@@ -16043,6 +16205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7215584294284680062, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     - target: {fileID: 7483763616272154357, guid: d9ea3ac42d6bf70408d7d96e0fda7711, type: 3}
       propertyPath: m_text
       value: 1 Turns
@@ -16148,6 +16314,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.00010681152
       objectReference: {fileID: 0}
+    - target: {fileID: 821256528331110420, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000015258789
+      objectReference: {fileID: 0}
     - target: {fileID: 993094507802201046, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
       propertyPath: m_Name
       value: Skill Description
@@ -16230,7 +16400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816710312347098003, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 8816710312347098003, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16247,6 +16417,10 @@ PrefabInstance:
     - target: {fileID: 8997572976028263608, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.00010681152
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997572976028263608, guid: 96e9cd79ea417004a9eefe286eb16893, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000045776367
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
