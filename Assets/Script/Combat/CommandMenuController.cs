@@ -175,8 +175,6 @@ public class CommandMenuController : MonoBehaviour
 			case "Attack":
 				// Select target for attack
 				Debug.Log(actorEntity.characterName + " chose to Attack!");
-
-				SetLocked(true);
 				break;
 
 			case "Guard":
