@@ -5,6 +5,6 @@ public enum BattleUIState
 	CommandSelection,		// Select action command (W/S + Enter/ESC)
 	SkillSelection,			// Select skill (W/S + Enter/ESC)
 	Targeting,				// Select target (A/D + Enter/ESC)
-	Confirming,				// Confirm action (Enter/ESC)
+	Confirming,				// Confirm action (W/S + Enter/ESC)
 	Executing				// Executing action (no input)
 }

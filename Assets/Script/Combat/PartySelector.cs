@@ -30,9 +30,9 @@ public class PartySelector : MonoBehaviour
 		}
 	}
 
-	private int index = 0;                     // Current selected index in party
-	private bool selected = false;             // True if a character is selected
-	private int lastConfirmedIndex = -1;
+	private int index = 0;						// Current selected index in party
+	private bool selected = false;				// True if a character is selected
+	private int lastConfirmedIndex = -1;		// Last confirmed index when a character is selected
 
 	void Start()
 	{

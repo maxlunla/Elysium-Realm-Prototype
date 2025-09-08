@@ -7089,7 +7089,7 @@ MonoBehaviour:
   - {fileID: 2017241993}
   - {fileID: 976696053}
   - {fileID: 1662012828}
-  tpText: {fileID: 1780301150}
+  apText: {fileID: 1780301150}
   actionText: {fileID: 1269783824}
   executeControlsPanel: {fileID: 1639699115}
 --- !u!1 &896824044
@@ -11859,38 +11859,38 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   - id: Skills
     displayName: Skills
     available: 1
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Items
     displayName: Items
     available: 0
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Escape
     displayName: Escape
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   skills:
   - id: Assassination Mark
     displayName: Assassination Mark
     description: Deal 50% ATK to single enemy, give Assassination Mark for 3 turns.
     mpCost: 5
-    tpCost: 2
+    apCost: 2
     cooldown: 3
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -11899,7 +11899,7 @@ MonoBehaviour:
     displayName: Wolf Fang
     description: 'Deal 126% ATK to single enemy. '
     mpCost: 6
-    tpCost: 2
+    apCost: 2
     cooldown: 1
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -11909,7 +11909,7 @@ MonoBehaviour:
     description: Increase critical chance by 15% and critical damage by 50% for 2
       turns.
     mpCost: 10
-    tpCost: 2
+    apCost: 2
     cooldown: 3
     type: '[Buff]'
     isCooldown: 0
@@ -11918,7 +11918,7 @@ MonoBehaviour:
     displayName: Bloodpaint
     description: Deal 328% ATK to single enemy.
     mpCost: 18
-    tpCost: 5
+    apCost: 5
     cooldown: 5
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -11927,7 +11927,7 @@ MonoBehaviour:
     displayName: Smoke Bomb
     description: Deal 102% ATK to all enemies. 50% Blind for 2 turns.
     mpCost: 12
-    tpCost: 3
+    apCost: 3
     cooldown: 4
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -12004,38 +12004,38 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   - id: Skills
     displayName: Skills
     available: 1
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Items
     displayName: Items
     available: 0
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Escape
     displayName: Escape
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   skills:
   - id: Fireball
     displayName: Fireball
     description: Deal 125% MAT to single enemy. 50% Burn for 2 turns.
     mpCost: 13
-    tpCost: 2
+    apCost: 2
     cooldown: 1
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -12044,7 +12044,7 @@ MonoBehaviour:
     displayName: Ice Bolt
     description: Deal 95% MAT to single enemy. 50% Freeze for 1 turn.
     mpCost: 17
-    tpCost: 2
+    apCost: 2
     cooldown: 2
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -12053,7 +12053,7 @@ MonoBehaviour:
     displayName: Thunder Storm
     description: Deal 100% MAT damage to all enemies each turn for 3 turns.
     mpCost: 22
-    tpCost: 5
+    apCost: 5
     cooldown: 5
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -12063,7 +12063,7 @@ MonoBehaviour:
     description: Reduce damage taken by 20% by consuming 1% of current MP per hit
       everytime take damage.
     mpCost: 20
-    tpCost: 3
+    apCost: 3
     cooldown: 1
     type: '[Buff]'
     isCooldown: 0
@@ -12073,7 +12073,7 @@ MonoBehaviour:
     description: Deal 350% MAT to single enemy. If Thunder Storm is active, change
       to attack all enemies.
     mpCost: 28
-    tpCost: 4
+    apCost: 4
     cooldown: 4
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -15185,38 +15185,38 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   - id: Skills
     displayName: Skills
     available: 1
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Items
     displayName: Items
     available: 0
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Escape
     displayName: Escape
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   skills:
   - id: Double Slash
     displayName: Double Slash
     description: Deal 130% ATK to single enemy.
     mpCost: 7
-    tpCost: 2
+    apCost: 2
     cooldown: 1
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -15226,7 +15226,7 @@ MonoBehaviour:
     description: 'Deal 210% ATK to single enemy. Combo: +20% dmg if used after Double
       Slash.'
     mpCost: 13
-    tpCost: 3
+    apCost: 3
     cooldown: 1
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -15236,7 +15236,7 @@ MonoBehaviour:
     description: 'Deal 275% ATK to single enemy. Combo: +20% dmg if used after Triple
       Slash and receive 2 Combo stack.'
     mpCost: 15
-    tpCost: 4
+    apCost: 4
     cooldown: 2
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -15246,7 +15246,7 @@ MonoBehaviour:
     description: Increase party damage dealing 5% and reduce damage taken 5% for
       3 turns.
     mpCost: 10
-    tpCost: 2
+    apCost: 2
     cooldown: 3
     type: '[Buff]'
     isCooldown: 0
@@ -15256,7 +15256,7 @@ MonoBehaviour:
     description: 'Deal 200% ATK to all enemies. Combo: Deal additional hit if used
       after Finisher Slash and receive 1 Combo stack per enemy hit.'
     mpCost: 14
-    tpCost: 4
+    apCost: 4
     cooldown: 4
     type: '[Attack] - [Physical]'
     isCooldown: 0
@@ -16548,38 +16548,38 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   - id: Skills
     displayName: Skills
     available: 1
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Items
     displayName: Items
     available: 0
     mpCost: 0
-    tpCost: 0
+    apCost: 0
     targetType: 0
   - id: Escape
     displayName: Escape
     available: 1
     mpCost: 0
-    tpCost: 1
+    apCost: 0
     targetType: 4
   skills:
   - id: Vine Surge
     displayName: Vine Surge
     description: 'Deal 50% MAT to single enemy. 20% Bleeding for 2 turns. '
     mpCost: 8
-    tpCost: 2
+    apCost: 2
     cooldown: 1
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -16588,7 +16588,7 @@ MonoBehaviour:
     displayName: Rejuvenation
     description: Recover HP equal to 10% MAT + 2% of Max HP for 3 turns to all allies.
     mpCost: 15
-    tpCost: 2
+    apCost: 2
     cooldown: 5
     type: '[Buff]'
     isCooldown: 0
@@ -16598,7 +16598,7 @@ MonoBehaviour:
     description: Deal 100% MAT damage to all enemies and recover HP equal to 45%
       MAT to all allies.
     mpCost: 30
-    tpCost: 5
+    apCost: 5
     cooldown: 4
     type: '[Attack] - [Magical]'
     isCooldown: 0
@@ -16607,7 +16607,7 @@ MonoBehaviour:
     displayName: Flow of the River
     description: Remove all debuffs from all allies.
     mpCost: 27
-    tpCost: 3
+    apCost: 3
     cooldown: 3
     type: '[Buff]'
     isCooldown: 0
@@ -16616,7 +16616,7 @@ MonoBehaviour:
     displayName: "Forest\u2019s Wraith"
     description: Deal 100% of MAT to single enemy, give Forest Wraith for 2 turns.
     mpCost: 30
-    tpCost: 5
+    apCost: 5
     cooldown: 5
     type: '[Attack] - [Magical]'
     isCooldown: 0
