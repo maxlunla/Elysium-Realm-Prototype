@@ -61,7 +61,7 @@ public class SkillMenuController : MonoBehaviour
 				entry.cooldownText.text = skill.cooldown > 0 ? skill.cooldown + (skill.cooldown == 1 ? " Turn" : " Turns") : "";	// Set cooldown text
 
 				// Change color based on whether the skill can be used with current AP
-				if (skill.apCost > BattleManager.Instance.currentAP)
+				if (skill.apCost > BattleManager.Instance.currentAP || skill.mpCost > actorEntity.currentMP)
 				{
 					// Gray out the skill if not enough AP
 					entry.panel.GetComponent<Image>().color = Color.gray;
@@ -75,6 +75,18 @@ public class SkillMenuController : MonoBehaviour
 			else
 			{
 				entry.panel.SetActive(false);		// Hide unused skill if actor has less than 5 skills
+			}
+		}
+
+		// Set index to first usable skill
+		for (int i = 0; i < actorEntity.skills.Count; i++)
+		{
+			var skill = actorEntity.skills[i];
+			if (skill.apCost <= BattleManager.Instance.currentAP &&
+				skill.mpCost <= actorEntity.currentMP)
+			{
+				index = i;
+				break;
 			}
 		}
 
@@ -125,7 +137,8 @@ public class SkillMenuController : MonoBehaviour
 				while (newIndex >= 0)
 				{
 					if (newIndex < actorEntity.skills.Count &&
-						actorEntity.skills[newIndex].apCost <= BattleManager.Instance.currentAP)
+						actorEntity.skills[newIndex].apCost <= BattleManager.Instance.currentAP &&
+						actorEntity.skills[newIndex].mpCost <= actorEntity.currentMP)
 					{
 						index = newIndex;
 						break;
@@ -145,7 +158,8 @@ public class SkillMenuController : MonoBehaviour
 				// Skip skills that cannot be used due to insufficient AP
 				while (newIndex < actorEntity.skills.Count)
 				{
-					if (actorEntity.skills[newIndex].apCost <= BattleManager.Instance.currentAP)
+					if (actorEntity.skills[newIndex].apCost <= BattleManager.Instance.currentAP &&
+						actorEntity.skills[newIndex].mpCost <= actorEntity.currentMP)
 					{
 						index = newIndex;
 						break;
@@ -177,7 +191,8 @@ public class SkillMenuController : MonoBehaviour
 	// RefreshHighlight updates the visual highlight of the currently selected skill.
 	void RefreshHighlight()
 	{
-		int currentAP = BattleManager.Instance.currentAP;		// Get current AP from BattleManager
+		int currentAP = BattleManager.Instance.currentAP;       // Get current AP from BattleManager
+		int currentMP = actorEntity.currentMP;					// Get current MP from actor entity
 
 		// Check each skill entry to update its highlight and color based on selection and AP cost
 		for (int i = 0; i < entries.Count; i++)
@@ -185,8 +200,8 @@ public class SkillMenuController : MonoBehaviour
 			var img = entries[i].panel.GetComponent<Image>();	// Get the Image component of the skill panel
 			if (img == null) continue;			// Skip if no Image component found
 
-			// If not enough AP to use the skill, gray it out
-			if (i < actorEntity.skills.Count && actorEntity.skills[i].apCost > currentAP)
+			// If not enough AP or MP for this skill, gray it out
+			if (i < actorEntity.skills.Count && (actorEntity.skills[i].apCost > currentAP || actorEntity.skills[i].mpCost > currentMP))
 			{
 				img.color = Color.gray;
 			}
@@ -223,7 +238,7 @@ public class SkillMenuController : MonoBehaviour
 		var skillData = actorEntity.skills[index];		// Get the selected skill data
 
 		// If not enough AP to use the skill, do nothing
-		if (skillData.apCost > BattleManager.Instance.currentAP)
+		if (skillData.apCost > BattleManager.Instance.currentAP || skillData.mpCost > actorEntity.currentMP)
 		{
 			Debug.Log("Not enough AP to use this skill!");
 			return;

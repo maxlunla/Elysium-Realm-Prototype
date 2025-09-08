@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using System.Collections;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine.UIElements;
 
 // This script manages all battle actors in the scene and categorizes them into players and enemies
 public class BattleManager : MonoBehaviour
@@ -30,7 +33,9 @@ public class BattleManager : MonoBehaviour
 		public BattleActorEntity actor;					// The actor performing the action
 		public SkillData skill;							// The skill being used
 		public ActorCommand action;						// The action being performed
-		public BattleActorEntity target;				// The target of the action
+		public BattleActorEntity target;                // The target of the action
+		public int mpCost;								// MP cost at the moment of queuing
+		public int apCost;								// AP cost at the moment of queuing
 	}
 
 	private void Awake()
@@ -74,7 +79,17 @@ public class BattleManager : MonoBehaviour
 
 	private void Update()
 	{
-		UpdateAPActionUI();			// Update AP/Action UI each frame
+		UpdateAPActionUI();		// Update AP/Action UI each frame
+
+		if (Input.GetKeyDown(KeyCode.P))	// Press 'P' to debug queued actions
+		{
+			DebugQueuedActions();
+		}
+
+		if (Input.GetKeyDown(KeyCode.Q))
+		{
+			UndoLastQueuedAction();			// Press 'Q' to undo last queued action
+		}
 	}
 
 	// Update AP and Action UI elements, called when AP or Action changes
@@ -97,14 +112,11 @@ public class BattleManager : MonoBehaviour
 	// Called by TargetSelector when a target is selected to add the action to the queue
 	public void AddToActionQueue(BattleActorEntity actor, SkillData skill, ActorCommand action, BattleActorEntity target)
 	{
-		if (currentAP <= 0 || currentAction <= 0) return;		// Check if there are enough AP and Actions left
+		if (currentAP <= 0 || currentAction <= 0) return;       // Check if there are enough AP and Actions left
 
 		// Calculate the AP cost of the skill or action
-		int apCost = 1;					// Default AP cost is 1 at minimum
-		if (skill != null)
-			apCost = skill.apCost;		// If using a skill, get its AP cost
-		else if (action != null)
-			apCost = action.apCost;		// If using an action, get its AP cost
+		int apCost = skill != null ? skill.apCost : (action != null ? action.apCost : 1);
+		int mpCost = skill != null ? skill.mpCost : (action != null ? action.mpCost : 0);
 
 		if (apCost > currentAP) return;	// Check if there are enough AP to perform the action
 
@@ -114,7 +126,9 @@ public class BattleManager : MonoBehaviour
 			actor = actor,
 			skill = skill,
 			action = action,
-			target = target
+			target = target,
+			mpCost = skill != null ? skill.mpCost : (action != null ? action.mpCost : 0),
+			apCost = skill != null ? skill.apCost : (action != null ? action.apCost : 1)
 		};
 
 		queuedActions.Add(item);		// Add the action to the queue
@@ -123,7 +137,14 @@ public class BattleManager : MonoBehaviour
 		currentAP -= apCost;
 		currentAction--;
 
-		UpdateAPActionUI();				// Update AP and Action in the UI
+		// **ลด MP ของตัวละครทันที**
+		if (mpCost > 0)
+		{
+			actor.UseMP(mpCost);
+		}
+
+		UpdateAPActionUI();             // Update AP and Action in the UI
+		UpdateActionQueueUI();			// Update action queue UI
 	}
 
 	// UpdateActionQueueUI to refresh the icon colors based on queued actions in the queue
@@ -131,15 +152,64 @@ public class BattleManager : MonoBehaviour
 	{
 		if (BattleManager.Instance.actionQueuePanel == null) return;
 
-		var icons = BattleManager.Instance.actionQueuePanel.actionIcons;		// Get action icons from the panel reference 
+		var icons = BattleManager.Instance.actionQueuePanel.actionIcons;        // Get action icons from the panel reference 
 
 		// Loop through each icon and set its color based on whether there is a queued action or not
-		for (int i = 0; i < icons.Length; i++)
+		for (int i = 0; i < actionQueuePanel.actionIcons.Length; i++)
 		{
+			var icon = actionQueuePanel.actionIcons[i];
+
+			if (icon == null) continue;
+
 			if (i < queuedActions.Count)
-				icons[i].color = Color.white;  // White color for filled slot
+			{
+				// White color for queued actions
+				icon.color = Color.white;
+			}
 			else
-				icons[i].color = Color.black;  // black color for empty slot
+			{
+				// Black color for empty slots
+				icon.color = Color.black;
+			}
 		}
+	}
+
+	public void UndoLastQueuedAction()
+	{
+		if (queuedActions.Count == 0) return; // Do nothing if there are no queued actions
+
+		// Remove the last action from the queue
+		var lastItem = queuedActions[queuedActions.Count - 1];
+		queuedActions.RemoveAt(queuedActions.Count - 1);
+
+		// Restore AP and Action count
+		currentAP += lastItem.apCost;
+		currentAction++;
+
+		// Restore MP if the action used MP
+		if (lastItem.mpCost > 0 && lastItem.actor != null)
+		{
+			lastItem.actor.RestoreMP(lastItem.mpCost); // สมมติว่ามีฟังก์ชัน RestoreMP ใน BattleActorEntity
+		}
+
+		UpdateAPActionUI();		// Update AP/Action UI
+		UpdateActionQueueUI();	// Update action queue UI
+	}
+
+	public void DebugQueuedActions()
+	{
+		Debug.Log("=== Queued Actions ===");
+		for (int i = 0; i < queuedActions.Count; i++)
+		{
+			var item = queuedActions[i];
+			string skillName = item.skill != null ? item.skill.displayName : "None";
+			string actionName = item.action != null ? item.action.displayName : "None";
+			string targetName = item.target != null ? item.target.characterName : "None";
+
+			Debug.Log(
+				$"[{i}] Actor: {item.actor.characterName}, Skill: {skillName}, Action: {actionName}, Target: {targetName}, AP: {item.apCost}, MP: {item.mpCost}"
+			);
+		}
+		Debug.Log("=====================");
 	}
 }

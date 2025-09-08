@@ -93,7 +93,7 @@ public class BattleActorEntity : MonoBehaviour
 	[Header("Enemy UI (On Head)")]
 	public Canvas hpCanvas;			// HP UI for enemies
 	public Canvas BosshpCanvas;		// HP UI for bosses
-	public GameObject cursor;		// Cursor object to show/hide
+	public GameObject cursor;       // Cursor object to show/hide
 
 	// ShowCursor for control the cursor visibility and color (used in target selection)
 	public void ShowCursor(bool value, Color? color = null)
@@ -124,6 +124,12 @@ public class BattleActorEntity : MonoBehaviour
 	{
 		// Reduce current MP but not below zero.
 		currentMP = Mathf.Max(0, currentMP - amount);
+	}
+
+	public void RestoreMP(int amount)
+	{
+		currentMP += amount;
+		if (currentMP > maxMP) currentMP = maxMP;
 	}
 
 	public void AddState(StateData newState)

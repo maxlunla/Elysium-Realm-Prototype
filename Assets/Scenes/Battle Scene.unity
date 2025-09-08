@@ -3081,6 +3081,9 @@ MonoBehaviour:
   commandMenuController: {fileID: 1163582645}
   skillMenuController: {fileID: 1196038653}
   playerCursor: {fileID: 588848316}
+  enemyCursorColor: {r: 1, g: 0, b: 0, a: 1}
+  allyCursorColor: {r: 0, g: 1, b: 1, a: 1}
+  selfCursorColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &392100693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,6 +4807,7 @@ MonoBehaviour:
   skills: []
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 1198890932}
 --- !u!1 &691984653
 GameObject:
@@ -10220,27 +10224,27 @@ MonoBehaviour:
   entries:
   - panel: {fileID: 573023947}
     nameText: {fileID: 352403486}
-    tpText: {fileID: 1896005470}
+    apText: {fileID: 1896005470}
     mpText: {fileID: 2092524804}
     cooldownText: {fileID: 210129661}
   - panel: {fileID: 309195421}
     nameText: {fileID: 1412117420}
-    tpText: {fileID: 1855840284}
+    apText: {fileID: 1855840284}
     mpText: {fileID: 505086843}
     cooldownText: {fileID: 831247773}
   - panel: {fileID: 2021976483}
     nameText: {fileID: 1304933928}
-    tpText: {fileID: 1990556318}
+    apText: {fileID: 1990556318}
     mpText: {fileID: 129390607}
     cooldownText: {fileID: 1096768253}
   - panel: {fileID: 676586448}
     nameText: {fileID: 1252485305}
-    tpText: {fileID: 1251807133}
+    apText: {fileID: 1251807133}
     mpText: {fileID: 2079538361}
     cooldownText: {fileID: 1862036205}
   - panel: {fileID: 1795815818}
     nameText: {fileID: 101116723}
-    tpText: {fileID: 804546859}
+    apText: {fileID: 804546859}
     mpText: {fileID: 1487317133}
     cooldownText: {fileID: 1806626606}
   descriptionName: {fileID: 1844788600}
@@ -11076,6 +11080,7 @@ MonoBehaviour:
   skills: []
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 872885845}
 --- !u!1 &1372391424
 GameObject:
@@ -11859,13 +11864,13 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   - id: Skills
     displayName: Skills
@@ -11883,7 +11888,7 @@ MonoBehaviour:
     displayName: Escape
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   skills:
   - id: Assassination Mark
@@ -11934,6 +11939,7 @@ MonoBehaviour:
     targetType: 2
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 13426071}
 --- !u!114 &1487317133 stripped
 MonoBehaviour:
@@ -12004,13 +12010,13 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   - id: Skills
     displayName: Skills
@@ -12028,7 +12034,7 @@ MonoBehaviour:
     displayName: Escape
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   skills:
   - id: Fireball
@@ -12080,6 +12086,7 @@ MonoBehaviour:
     targetType: 0
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 1135983728}
 --- !u!1 &1507538650
 GameObject:
@@ -13171,6 +13178,7 @@ MonoBehaviour:
   skills: []
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 1249406798}
 --- !u!1 &1583113250
 GameObject:
@@ -15185,13 +15193,13 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   - id: Skills
     displayName: Skills
@@ -15209,7 +15217,7 @@ MonoBehaviour:
     displayName: Escape
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   skills:
   - id: Double Slash
@@ -15263,6 +15271,7 @@ MonoBehaviour:
     targetType: 2
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 1724610648}
 --- !u!114 &1862036205 stripped
 MonoBehaviour:
@@ -15380,6 +15389,7 @@ MonoBehaviour:
   skills: []
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 111951505}
 --- !u!1 &1886463940
 GameObject:
@@ -15734,6 +15744,7 @@ MonoBehaviour:
   skills: []
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 681793355}
 --- !u!1 &1941134195
 GameObject:
@@ -16548,13 +16559,13 @@ MonoBehaviour:
     displayName: Attack
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 0
   - id: Guard
     displayName: Guard
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   - id: Skills
     displayName: Skills
@@ -16572,7 +16583,7 @@ MonoBehaviour:
     displayName: Escape
     available: 1
     mpCost: 0
-    apCost: 0
+    apCost: 1
     targetType: 4
   skills:
   - id: Vine Surge
@@ -16623,6 +16634,7 @@ MonoBehaviour:
     targetType: 0
   states: []
   hpCanvas: {fileID: 0}
+  BosshpCanvas: {fileID: 0}
   cursor: {fileID: 1193632237}
 --- !u!1 &2051291406
 GameObject:
