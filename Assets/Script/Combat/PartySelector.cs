@@ -14,7 +14,9 @@ public class PartySelector : MonoBehaviour
 	[Header("Cursor")]
 	public SelectionCursor cursor;            // Cursor object to indicate selection
 
-	public BattleUIState currentState = BattleUIState.PartySelection;	// Current state of the battle UI
+	public BattleUIState currentState = BattleUIState.PartySelection;   // Current state of the battle UI
+
+	public bool inputLocked = false;
 
 	// Get the currently selected BattleActorEntity
 	public BattleActorEntity CurrentActor
@@ -46,6 +48,12 @@ public class PartySelector : MonoBehaviour
 
 	void Update()
 	{
+		if (inputLocked)
+		{
+			inputLocked = false;
+			return; // ข้าม 1 เฟรม
+		}
+
 		// Handle input based on current state
 		switch (currentState)
 		{
@@ -65,6 +73,10 @@ public class PartySelector : MonoBehaviour
 
 	void HandlePartySelectionInput()
 	{
+		// If not in the partyselection state, ignore input
+		if (currentState != BattleUIState.PartySelection)
+			return;
+
 		// If not selected, allow A/D movement and selection
 		if (!selected)
 		{
@@ -80,6 +92,7 @@ public class PartySelector : MonoBehaviour
 			}
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
+				Debug.Log("Selected character: " + party[index].name);
 				selected = true;				// Select current character
 				lastConfirmedIndex = index;		// Remember last confirmed index
 				OnSelect(party[index]);			// Trigger selection event
@@ -93,18 +106,14 @@ public class PartySelector : MonoBehaviour
 		}
 		else
 		{
-			// If selected, allow canceling selection with ESC
-			if (Input.GetKeyDown(KeyCode.Escape))
+			selected = false;					// Deselect character
+			if (lastConfirmedIndex >= 0)
 			{
-				selected = false;					// Deselect character
-				if (lastConfirmedIndex >= 0)
-				{
-					// Return to last confirmed index
-					index = lastConfirmedIndex;
-					MoveCursorTo(index);
-				}
-				OnCancelSelection();	// Trigger cancel event
+				// Return to last confirmed index
+				index = lastConfirmedIndex;
+				MoveCursorTo(index);
 			}
+			OnCancelSelection();	// Trigger cancel event
 		}
 	}
 

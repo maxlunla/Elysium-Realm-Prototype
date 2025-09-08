@@ -96,7 +96,11 @@ public class CommandMenuController : MonoBehaviour
 	{
 		// Handle input for navigating and selecting commands
 		if (!gameObject.activeSelf) return;		// Skip if menu is not active
-		if (locked) return;                     // Skip if input is locked
+		if (locked)
+		{
+			locked = false;
+			return; // Skip if input is locked
+		}
 
 		if (partySelector.currentState == BattleUIState.CommandSelection)
 		{
@@ -122,6 +126,7 @@ public class CommandMenuController : MonoBehaviour
 
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
+				Debug.Log("Command pressed: ESC");
 				partySelector.currentState = BattleUIState.PartySelection;
 
 				// Cancel and go back to party selection
@@ -167,19 +172,23 @@ public class CommandMenuController : MonoBehaviour
 		// Confirm the selected command
 		lastSelectedIndex = index;	// Store last selected index
 
-		var selected = entries[index].id;	// Get selected command ID
+		var selected = entries[index].id;   // Get selected command ID
+		var actionData = actorEntity.commands[index];  // อันนี้คือ object ของสกิล
 
 		switch (selected)
 		{
 			// Handle each command accordingly
 			case "Attack":
 				// Select target for attack
+				locked = true;
 				Debug.Log(actorEntity.characterName + " chose to Attack!");
+				FindObjectOfType<TargetSelector>().StartTargeting(actorEntity, null, actionData);
 				break;
 
 			case "Guard":
 				// Make selected actor guard
 				Debug.Log(actorEntity.characterName + " chose to Guard!");
+				FindObjectOfType<TargetSelector>().StartTargeting(actorEntity, null, actionData);
 				break;
 
 			case "Skills":
@@ -206,6 +215,7 @@ public class CommandMenuController : MonoBehaviour
 			case "Escape":
 				// Make current actor escape from battle
 				Debug.Log(actorEntity.characterName + " chose to Escape!");
+				FindObjectOfType<TargetSelector>().StartTargeting(actorEntity, null, actionData);
 				break;
 		}
 	}

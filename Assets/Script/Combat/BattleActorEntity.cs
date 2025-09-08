@@ -10,7 +10,18 @@ public class ActorCommand
 {
 	public string id;				// "Attack", "Guard", "Skills", "Items", "Escape"
 	public string displayName;		// Name of action to show in UI
-	public bool available = true;	// True if action can be selected
+	public bool available = true;   // True if action can be selected
+	public int mpCost;              // Mana cost
+	public int tpCost;              // Technical points cost
+	public enum TargetType
+	{
+		Single_Enemy,
+		Single_Ally,
+		Multiple_Enemies,
+		Multiple_Allies,
+		Self,
+	}
+	public TargetType targetType;
 }
 
 // Data structure for a skill

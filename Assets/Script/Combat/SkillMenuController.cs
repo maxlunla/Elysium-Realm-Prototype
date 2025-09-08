@@ -31,6 +31,7 @@ public class SkillMenuController : MonoBehaviour
 	private BattleActorEntity actorEntity;		// Current actor entity
 
 	public GameObject descriptionPanel;
+	public bool skillLocked = false;
 
 	public void OpenMenu(PartySelector ownerSelector, CommandMenuController cmdMenu, BattleActorEntity actorEntity)
 	{
@@ -76,6 +77,11 @@ public class SkillMenuController : MonoBehaviour
 		RefreshDescription();	// Show description of the first skill selected
 	}
 
+	public void lockedInput(bool value)
+	{
+		skillLocked = value;
+	}
+
 	public void CloseMenu()
 	{
 		// Close the skill menu
@@ -85,12 +91,18 @@ public class SkillMenuController : MonoBehaviour
 		if (descriptionPanel != null)
 			descriptionPanel.SetActive(false);
 		if (commandMenu != null)
-			commandMenu.SetLocked(false);	// Unlock command menu if it was locked
+			commandMenu.SetLocked(true);	// Unlock command menu if it was locked
 	}
 
 	void Update()
 	{
 		if (!gameObject.activeSelf) return;		// Do nothing if menu is not active
+
+		if (skillLocked)
+		{
+			skillLocked = false;
+			return;
+		}
 
 		if (owner.currentState == BattleUIState.SkillSelection) 
 		{
@@ -120,6 +132,7 @@ public class SkillMenuController : MonoBehaviour
 
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
+				Debug.Log("Skill Selection Cancelled");
 				// Cancel and go back to command menu
 				CloseMenu();
 				owner.currentState = BattleUIState.CommandSelection; // Change state back to command selection
@@ -169,15 +182,20 @@ public class SkillMenuController : MonoBehaviour
 		if (commandMenu != null)
 		{
 			// Ensure command menu is unlocked and reset command menu's selection index 
-			commandMenu.SetLocked(false);
+			commandMenu.SetLocked(true);
 			commandMenu.index = 0;
 			commandMenu.lastSelectedIndex = 0;
 			commandMenu.RefreshHighlight();
 		}
 
 		// Add action here:
+		var skillData = actorEntity.skills[index];  // อันนี้คือ object ของสกิล
+		FindObjectOfType<TargetSelector>().StartTargeting(actorEntity, skillData);
+	}
 
-		CloseMenu();		// Close skill menu
-		owner.BackToPartySelection();	// Return to party selection
+	public void HideSkillDescriptionPanel()
+	{
+		if (descriptionPanel != null)
+			descriptionPanel.SetActive(false);
 	}
 }
