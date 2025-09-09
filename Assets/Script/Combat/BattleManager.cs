@@ -88,7 +88,12 @@ public class BattleManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
-			UndoLastQueuedAction();			// Press 'Q' to undo last queued action
+			UndoLastQueuedAction();			// Press 'Q' to undo the last queued action
+		}
+
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			ClearAllQueuedActions();		// Press 'R' to clear all queued actions
 		}
 	}
 
@@ -196,7 +201,30 @@ public class BattleManager : MonoBehaviour
 		UpdateActionQueueUI();	// Update action queue UI
 	}
 
-	public void DebugQueuedActions()
+	public void ClearAllQueuedActions()
+	{
+		if (queuedActions.Count == 0) return;
+
+		// Restore AP, Action, and MP for all queued actions
+		foreach (var item in queuedActions)
+		{
+			currentAP += item.apCost;
+			currentAction++;
+
+			if (item.mpCost > 0 && item.actor != null)
+			{
+				item.actor.RestoreMP(item.mpCost);
+			}
+		}
+
+		// Clear the action queue
+		queuedActions.Clear();
+
+		UpdateAPActionUI();     // Update AP/Action UI
+		UpdateActionQueueUI();  // Update action queue UI
+	}
+
+		public void DebugQueuedActions()
 	{
 		Debug.Log("=== Queued Actions ===");
 		for (int i = 0; i < queuedActions.Count; i++)
