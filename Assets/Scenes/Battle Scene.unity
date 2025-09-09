@@ -1901,7 +1901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2049903499927513588, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.21191406
+      value: -0.21191454
       objectReference: {fileID: 0}
     - target: {fileID: 2428883870976885068, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2193,7 +2193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726225123085349186, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.21191406
+      value: -0.21191454
       objectReference: {fileID: 0}
     - target: {fileID: 9077167811279679211, guid: a9493d9c21f82ca44962fd31446fcd8a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13687,6 +13687,7 @@ GameObject:
   - component: {fileID: 1639699116}
   - component: {fileID: 1639699118}
   - component: {fileID: 1639699117}
+  - component: {fileID: 1639699119}
   m_Layer: 5
   m_Name: Execute Controls Panel
   m_TagString: Untagged
@@ -13754,6 +13755,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639699115}
   m_CullTransparentMesh: 1
+--- !u!114 &1639699119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639699115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7f4e956c84984ab6387f88d1cdb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entries:
+  - id: Execute
+    button: {fileID: 1195612398}
+  - id: Cancel
+    button: {fileID: 157146852}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &1662012825
 PrefabInstance:
   m_ObjectHideFlags: 0

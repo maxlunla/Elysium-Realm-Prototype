@@ -167,7 +167,8 @@ public class PartySelector : MonoBehaviour
 		currentState = BattleUIState.PartySelection;		// Switch to Party Selection state
 		selected = false;                                   // Deselect character
 		commandPanel.gameObject.SetActive(false);			// Close Command Menu UI
-		skillMenuPanel.gameObject.SetActive(false);			// Close Skill Menu UI
+		skillMenuPanel.gameObject.SetActive(false);         // Close Skill Menu UI
+		cursor.gameObject.SetActive(true);					// Show cursor
 		MoveCursorTo(index);								// Move cursor to current index
 		Debug.Log("Returned to Party Selection");
 	}

@@ -86,12 +86,14 @@ public class BattleManager : MonoBehaviour
 			DebugQueuedActions();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Q))
+		// If not in confirming state, allow undo and clear actions
+		if (Input.GetKeyDown(KeyCode.Q) && (BattleManager.Instance.partySelector.currentState != BattleUIState.Confirming))
 		{
 			UndoLastQueuedAction();			// Press 'Q' to undo the last queued action
 		}
 
-		if (Input.GetKeyDown(KeyCode.R))
+		// If not in confirming state, allow clearing all actions
+		if (Input.GetKeyDown(KeyCode.R) && (BattleManager.Instance.partySelector.currentState != BattleUIState.Confirming))
 		{
 			ClearAllQueuedActions();		// Press 'R' to clear all queued actions
 		}
