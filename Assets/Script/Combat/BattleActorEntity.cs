@@ -48,6 +48,13 @@ public class SkillData
 		Self,
 	}
 	public TargetType targetType;
+
+	public float baseDamage;		// Base damage of the skill, e.g., 100% of ATK
+	public float scaling = 1.0f;	// default is 1.0 (100% of ATK or MAG)
+	public string applyStatus;		// "Poison", "Burn", etc.
+	public int statusDuration;		// Duration in turns
+	public float statusChance;		// e.g., 0.3 for 30% chance
+	public bool combo;				// Special effect with the some condition
 }
 
 // Data structure for a state (Buff/Debuff)

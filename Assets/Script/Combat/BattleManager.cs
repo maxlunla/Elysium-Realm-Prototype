@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
 	public List<BattleActorEntity> enemies = new List<BattleActorEntity>();		// List of enemy actors in the scene
 	public List<BattleActorEntity> players = new List<BattleActorEntity>();     // List of player actors in the scene																// List เก็บ queue
 	public ActionQueuePanel actionQueuePanel;
+	public ExecuteController executeController;
 
 	[Header("References")]
 	public PartySelector partySelector;					// Reference to PartySelector component
@@ -226,7 +227,12 @@ public class BattleManager : MonoBehaviour
 		UpdateActionQueueUI();  // Update action queue UI
 	}
 
-		public void DebugQueuedActions()
+	public List<ActionQueueItem> GetQueuedActions()
+	{
+		return queuedActions; // คืน queue ปัจจุบัน
+	}
+
+	public void DebugQueuedActions()
 	{
 		Debug.Log("=== Queued Actions ===");
 		for (int i = 0; i < queuedActions.Count; i++)

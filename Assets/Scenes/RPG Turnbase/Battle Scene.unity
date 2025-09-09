@@ -722,6 +722,7 @@ MonoBehaviour:
   enemies: []
   players: []
   actionQueuePanel: {fileID: 889711627}
+  executeController: {fileID: 1653126849}
   partySelector: {fileID: 1695494763}
   skillMenuController: {fileID: 1196038653}
   currentAP: 15
@@ -13773,6 +13774,51 @@ MonoBehaviour:
   - id: Cancel
     button: {fileID: 157146852}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!1 &1653126847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653126848}
+  - component: {fileID: 1653126849}
+  m_Layer: 0
+  m_Name: ExecuteController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1653126848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653126847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998207647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1653126849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653126847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e09b6dd3845624d8fd32464288e5d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executePanel: {fileID: 1639699115}
 --- !u!1001 &1662012825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16199,6 +16245,7 @@ Transform:
   m_Children:
   - {fileID: 381028396}
   - {fileID: 83195908}
+  - {fileID: 1653126848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2017241990

@@ -81,12 +81,14 @@ public class ExecuteControlsPanelController : MonoBehaviour
 		var selected = entries[index].id;		// Get the ID of the selected entry
 
 		// Handle the selected action ("Confirm" or "Cancel")
-		if (selected == "Confirm")
+		if (selected == "Execute")
 		{
 			// Execute all queued actions and proceed with the battle
 			Debug.Log("Execute queued actions!");
+
+			BattleManager.Instance.partySelector.currentState = BattleUIState.Executing;
 			// TODO: Implement action execution logic here
-			// BattleManager.Instance.ExecuteActionQueue();
+			StartCoroutine(BattleManager.Instance.executeController.ExecuteQueuedActions());
 		}
 		else if (selected == "Cancel")
 		{
