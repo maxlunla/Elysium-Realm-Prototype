@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Respawn Settings")]
 	public Transform respawnPoint;  // ตำแหน่ง spawn ใหม่
+
+	[Header("Damage Over Time Settings")]
+	public float dotInterval = 0.2f; // ลด HP ทุก 0.2 วิ
+	public int dotAmount = 5;        // ลด HP ทีละ 2
+	private Coroutine dotCoroutine;
+	private bool inFlashlightZone = false; // ตัวแปรเช็คว่า player อยู่ใน trigger ไหม
 
 	void Start()
 	{
@@ -59,8 +66,23 @@ public class PlayerController : MonoBehaviour
 		{
 			DieAndRespawn();
 		}
+		
+		if (other.CompareTag("Flashlight"))
+		{
+			inFlashlightZone = true;
+			StartDamageOverTime();
+		}
 	}
 
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.CompareTag("Flashlight"))
+		{
+			inFlashlightZone = false;   // ออกจาก trigger
+			StopDamageOverTime(); // หยุดโดนลด HP
+		}
+	}
+	
 	private void DieAndRespawn()
 	{
 		// รีเซ็ตตำแหน่ง player ไป respawn point
@@ -70,5 +92,32 @@ public class PlayerController : MonoBehaviour
 		transform.position = respawnPoint.position;
 		velocity = Vector3.zero;            // รีเซ็ตแรง
 		controller.enabled = true;           // เปิดอีกครั้ง
+	}
+	public void StartDamageOverTime()
+	{
+		if (dotCoroutine != null)
+			StopCoroutine(dotCoroutine);
+
+		dotCoroutine = StartCoroutine(DamageOverTime());
+	}
+
+	public void StopDamageOverTime()
+	{
+		if (dotCoroutine != null)
+		{
+			StopCoroutine(dotCoroutine);
+			dotCoroutine = null;
+		}
+	}
+
+	private IEnumerator DamageOverTime()
+	{
+		while (inFlashlightZone) // ตรวจสอบว่าผู้เล่นยังอยู่ใน trigger
+		{
+			GetComponent<PlayerHealth>().TakeDamage(dotAmount);
+			yield return new WaitForSeconds(dotInterval);
+		}
+
+		dotCoroutine = null; // รีเซ็ต coroutine หลังออก trigger
 	}
 }

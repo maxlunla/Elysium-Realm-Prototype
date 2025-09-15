@@ -8,6 +8,7 @@ TagManager:
   - SafeZone
   - Enemy
   - Ground
+  - Flashlight
   layers:
   - Default
   - TransparentFX
