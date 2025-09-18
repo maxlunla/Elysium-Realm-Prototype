@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
 	private Coroutine dotCoroutine;			// Reference to the active DOT coroutine
 	private bool inFlashlightZone = false;	// Is the player in the flashlight damage zone?
 
+	public bool IsDead = false;			// Is the player dead?
+	public GameObject interactText;		// Reference to the interact text UI element
+
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
@@ -59,6 +62,14 @@ public class PlayerController : MonoBehaviour
 		// Apply gravity to vertical velocity
 		velocity.y += gravity * Time.deltaTime;			// Apply gravity
 		controller.Move(velocity * Time.deltaTime);		// Move the player based on velocity
+
+		// If player is dead, ensure they cannot move and hide the interact text
+		if (IsDead)
+		{
+			controller.enabled = false;		// Disable controller to prevent movement
+			interactText.SetActive(false);	// Hide interact text
+			return;							// Exit update early
+		}
 	}
 
 	// Handle trigger events for deadly shadows and flashlight zones

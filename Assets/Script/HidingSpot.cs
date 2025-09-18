@@ -19,7 +19,7 @@ public class HidingSpot : MonoBehaviour
 	void Update()
 	{
 		// If the player is in the zone and presses F, toggle hiding
-		if (isPlayerInZone && Input.GetKeyDown(KeyCode.F))
+		if (isPlayerInZone && Input.GetKeyDown(KeyCode.F) && playerController.IsDead == false)
 		{
 			if (!isHidden) HidePlayer();	// If not hidden, hide
 			else ExitHide();				// If hidden, exit hiding

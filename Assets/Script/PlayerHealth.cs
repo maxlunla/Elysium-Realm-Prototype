@@ -13,7 +13,9 @@ public class PlayerHealth : MonoBehaviour
 	[Header("UI")]
 	public TextMeshProUGUI hpText;		// Text to display HP
 	public Image hpBar;					// Image to represent HP bar fill (should be of type "Filled")
-	public GameObject gameOverText;		// Game Over text object
+	public GameObject gameOverText;     // Game Over text object
+
+	public PlayerController player;			// Reference to the player object
 
 	void Start()
 	{
@@ -47,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		// Show Game Over text and stop the game
 		gameOverText.SetActive(true);
+		player.IsDead = true;	// Set player state to dead
 		Time.timeScale = 0f;	// Pause the game
 	}
 

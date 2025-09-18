@@ -11,10 +11,12 @@ public class Switch : MonoBehaviour
 	private bool playerInTrigger = false;	// to check if player is in trigger area of the switch 
 	private bool isOnCooldown = false;		// to prevent multiple activations during cooldown after activation
 
+	public PlayerController playerController;
+
 	void Update()
 	{
 		// Check if player is in trigger and presses 'F' to activate the switch and not on cooldown
-		if (playerInTrigger && !isOnCooldown && Input.GetKeyDown(KeyCode.F))
+		if (playerInTrigger && !isOnCooldown && Input.GetKeyDown(KeyCode.F) && playerController.IsDead == false)
 		{
 			ActivateSwitch();		// activate the switch
 			CloseInteractText();	// close the interact text
