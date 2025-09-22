@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
 	public float dotInterval = 0.2f;		// Interval for damage over time
 	public int dotAmount = 5;				// Amount of damage per interval
 	private Coroutine dotCoroutine;			// Reference to the active DOT coroutine
-	private bool inFlashlightZone = false;	// Is the player in the flashlight damage zone?
+	private bool inFlashlightZone = false;  // Is the player in the flashlight damage zone?
+	public bool isInShadow = false;			// Controled by SafeShadow script
 
 	public bool IsDead = false;			// Is the player dead?
 	public GameObject interactText;		// Reference to the interact text UI element
@@ -78,7 +79,10 @@ public class PlayerController : MonoBehaviour
 		// If player collides with a deadly shadow, they die and respawn
 		if (other.CompareTag("DeadlyShadow"))
 		{
-			DieAndRespawn();
+			if (!isInShadow)
+			{
+				DieAndRespawn();
+			}
 		}
 		
 		// If player enters a flashlight zone, start taking damage over time
@@ -138,5 +142,10 @@ public class PlayerController : MonoBehaviour
 		}
 
 		dotCoroutine = null;	// Clear the coroutine reference when done
+	}
+
+	public void KillPlayer()
+	{
+		DieAndRespawn();	// Public method to kill the player and respawn
 	}
 }
