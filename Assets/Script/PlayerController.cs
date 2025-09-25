@@ -79,14 +79,15 @@ public class PlayerController : MonoBehaviour
 		// If player collides with a deadly shadow, they die and respawn
 		if (other.CompareTag("DeadlyShadow"))
 		{
-			if (!isInShadow)
+			if (!isInShadow && gameObject.layer == LayerMask.NameToLayer("Default"))
 			{
+				Debug.Log("Player hit a deadly shadow and will respawn.");
 				DieAndRespawn();
 			}
 		}
 		
 		// If player enters a flashlight zone, start taking damage over time
-		if (other.CompareTag("Flashlight"))
+		if (other.CompareTag("Flashlight") && gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
 			inFlashlightZone = true;
 			StartDamageOverTime();
@@ -105,12 +106,15 @@ public class PlayerController : MonoBehaviour
 	
 	private void DieAndRespawn()
 	{
-		// Inflict fatal damage to the player
-		GetComponent<PlayerHealth>().TakeDamage(999);
-		controller.enabled = false;						// Disable controller to avoid issues during teleport
-		transform.position = respawnPoint.position;		// Teleport player to respawn point
-		velocity = Vector3.zero;						// Reset velocity
-		controller.enabled = true;						// Re-enable controller
+		if (!isInShadow)
+		{
+			// Inflict fatal damage to the player
+			GetComponent<PlayerHealth>().TakeDamage(999);
+			controller.enabled = false;                     // Disable controller to avoid issues during teleport
+			transform.position = respawnPoint.position;     // Teleport player to respawn point
+			velocity = Vector3.zero;                        // Reset velocity
+			controller.enabled = true;                      // Re-enable controller
+		}
 	}
 
 	public void StartDamageOverTime()
@@ -135,7 +139,7 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator DamageOverTime()
 	{
 		// Continuously apply damage while the player is in the flashlight zone
-		while (inFlashlightZone)
+		while (inFlashlightZone && gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
 			GetComponent<PlayerHealth>().TakeDamage(dotAmount);		// Inflict damage
 			yield return new WaitForSeconds(dotInterval);			// Wait for the specified interval

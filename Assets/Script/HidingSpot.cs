@@ -29,8 +29,20 @@ public class HidingSpot : MonoBehaviour
 	// Function to hide the player
 	private void HidePlayer()
 	{
-		isHidden = true;			// Set hidden state to true
-		player.SetActive(false);	// Deactivate player object
+		playerController.isInShadow = true; // Player is in shadow when hiding, so set this to true to prevent being killed by deadly light
+		isHidden = true;                    // Set hidden state to true
+
+		player.layer = LayerMask.NameToLayer("HiddenPlayer");
+
+		// Disable player colliders to prevent interaction
+		var colliders = player.GetComponentsInChildren<Collider>();
+		foreach (var col in colliders)
+			col.enabled = false;
+
+		// Dable player renderers to make them invisible
+		var renderers = player.GetComponentsInChildren<Renderer>();
+		foreach (var r in renderers)
+			r.enabled = false;
 
 		// Notify all AI that the player is hidden
 		var aiList = FindObjectsOfType<PatrolGuardAI>();
@@ -43,8 +55,20 @@ public class HidingSpot : MonoBehaviour
 	// Function to exit hiding
 	private void ExitHide()
 	{
-		isHidden = false;			// Set hidden state to false
-		player.SetActive(true);		// Reactivate player object
+		playerController.isInShadow = false; // Player is no longer in shadow when exiting hiding
+		isHidden = false;					// Set hidden state to false
+
+		// Enable player colliders and renderers to make them visible and interactive again
+		var colliders = player.GetComponentsInChildren<Collider>();
+		foreach (var col in colliders)
+			col.enabled = true;
+
+		// Enable player renderers to make them visible
+		var renderers = player.GetComponentsInChildren<Renderer>();
+		foreach (var r in renderers)
+			r.enabled = true;
+
+		player.layer = LayerMask.NameToLayer("Default");
 
 		// Notify all AI that the player is no longer hidden
 		var aiList = FindObjectsOfType<PatrolGuardAI>();

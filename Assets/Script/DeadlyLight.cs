@@ -24,7 +24,7 @@ public class DeadlyLight : MonoBehaviour
 		// If the player is within the bounds of the light collider and not in shadow, kill the player
 		if (lightCollider.bounds.Contains(player.transform.position))
 		{
-			if (player.isInShadow == false)
+			if (player.isInShadow == false && player.gameObject.layer == LayerMask.NameToLayer("Default"))
 			{
 				player.KillPlayer();
 			}
