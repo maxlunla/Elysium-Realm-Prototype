@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+// This script will attach to the Reset Switch in the puzzle. The switch will turn all lights back on and update the signal indicators accordingly.
 public class ResetSwitch : MonoBehaviour
 {
 	[Header("Lights and Signals")]
-	public List<GameObject> allLights;       // ไฟทั้งหมดใน puzzle
-	public List<Renderer> allSignalBulbs;    // signal ทั้งหมด (เรียงตาม L1-L5)
+	public List<GameObject> allLights;       // All lights in the puzzle 
+	public List<Renderer> allSignalBulbs;    // All signal bulbs (indicators) in the puzzle
 
 	[Header("Materials")]
-	public Material onMaterial;              // สีแดง = Light เปิด
-	public Material offMaterial;             // สีเขียว = Light ปิด
+	public Material onMaterial;              // Red = Light On
+	public Material offMaterial;             // Green = Light Off
 
 	[Header("UI / Player")]
 	public GameObject interactText;
@@ -30,25 +31,27 @@ public class ResetSwitch : MonoBehaviour
 		}
 	}
 
+	// Reset all lights to on and update signals
 	public void ResetLights()
 	{
-		// เปิดทุกไฟ
+		// Activeate all lights in the list
 		foreach (var light in allLights)
 		{
 			if (light != null)
 				light.SetActive(true);
 		}
 
-		// อัปเดต signal ให้ตรงกับไฟ
+		// Set all signal bulbs to onMaterial (Red)
 		for (int i = 0; i < allSignalBulbs.Count; i++)
 		{
 			if (allSignalBulbs[i] != null)
 			{
-				allSignalBulbs[i].material = onMaterial; // สีแดง = เปิด
+				allSignalBulbs[i].material = onMaterial;
 			}
 		}
 	}
 
+	// Show or hide interaction text based on player presence in trigger
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))
