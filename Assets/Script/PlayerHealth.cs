@@ -45,6 +45,23 @@ public class PlayerHealth : MonoBehaviour
 			GameOver();
 	}
 
+	public void Heal(int heal)
+	{
+		// Reduce current HP and update UI
+		currentHP += heal;
+
+		// Clamp current HP to not exceed max HP
+		if (currentHP > maxHP) currentHP = maxHP;
+
+		// Clamp current HP to not go below 0
+		if (currentHP < 0) currentHP = 0;
+		UpdateUI();
+
+		// If HP drops to 0 or below, trigger Game Over
+		if (currentHP <= 0)
+			GameOver();
+	}
+
 	void GameOver()
 	{
 		// Show Game Over text and stop the game

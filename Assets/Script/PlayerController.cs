@@ -1,38 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// This script handles player movement, jumping, gravity, respawning, and damage over time when in a specific trigger zone.
-// Requires a CharacterController component on the same GameObject.
+// This script handles player movement, jumping, gravity, respawning, and damage/heal over time.
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
 	[Header("Movement Settings")]
-	public float moveSpeed = 10f;			// Move speed of the player
-	public float jumpHeight = 2f;			// Jump height of the player
-	public float gravity = -30f;			// Gravity force applied to the player
+	public float moveSpeed = 10f;
+	public float jumpHeight = 2f;
+	public float gravity = -30f;
 
-	private Vector3 velocity;				// Velocity vector for movement
-	private CharacterController controller;	// Reference to the CharacterController component
+	private Vector3 velocity;
+	private CharacterController controller;
 
 	[Header("Ground Check")]
-	public Transform groundCheck;			// Check if the player is grounded (empty GameObject at the player's feet)
-	public float groundDistance = 0.1f;		// Radius of the sphere to check for ground
-	public LayerMask groundMask;			// LayerMask to define what is ground (e.g., "Ground" layer)
-
-	private bool isGrounded;				// Is the player grounded?
+	public Transform groundCheck;
+	public float groundDistance = 0.1f;
+	public LayerMask groundMask;
+	private bool isGrounded;
 
 	[Header("Respawn Settings")]
-	public Transform respawnPoint;			// Respawn point (empty GameObject)
+	public Transform respawnPoint;
 
-	[Header("Damage Over Time Settings")]
-	public float dotInterval = 0.2f;		// Interval for damage over time
-	public int dotAmount = 5;				// Amount of damage per interval
-	private Coroutine dotCoroutine;			// Reference to the active DOT coroutine
-	private bool inFlashlightZone = false;  // Is the player in the flashlight damage zone?
-	public bool isInShadow = false;			// Controled by SafeShadow script
+	[Header("Damage / Heal Over Time")]
+	public float interval = 0.2f; // ใช้ร่วมกันทั้ง damage/heal
+	public int dotAmount = 5;
+	public int healAmount = 5;
 
-	public bool IsDead = false;			// Is the player dead?
-	public GameObject interactText;		// Reference to the interact text UI element
+	private Coroutine damageCoroutine;   // ✅ แยก coroutine damage
+	private Coroutine healCoroutine;     // ✅ แยก coroutine heal
+
+	private bool inFlashlightZone = false;
+
+	public bool isInShadow = false;
+	public bool IsDead = false;
+
+	public GameObject interactText;
 
 	void Start()
 	{
@@ -41,52 +44,42 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		// Check if grounded by casting a sphere at the groundCheck position
+		// Ground check
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-		// If player is grounded and falling, then reset downward velocity to a small negative value to keep them grounded smoothly
 		if (isGrounded && velocity.y < 0)
-		{
 			velocity.y = -2f;
-		}
 
-		float x = Input.GetAxisRaw("Horizontal");				// Get horizontal input (A/D or Left/Right arrows)
-		Vector3 move = transform.right * x;						// Calculate movement direction
-		controller.Move(move * moveSpeed * Time.deltaTime);		// Move the player
+		// Move
+		float x = Input.GetAxisRaw("Horizontal");
+		Vector3 move = transform.right * x;
+		controller.Move(move * moveSpeed * Time.deltaTime);
 
-		// Jumping mechanic - only allow jump if grounded and space key is pressed
+		// Jump
 		if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-		{
-			velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);	// Calculate jump velocity
-		}
+			velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
-		// Apply gravity to vertical velocity
-		velocity.y += gravity * Time.deltaTime;			// Apply gravity
-		controller.Move(velocity * Time.deltaTime);		// Move the player based on velocity
+		// Apply gravity
+		velocity.y += gravity * Time.deltaTime;
+		controller.Move(velocity * Time.deltaTime);
 
-		// If player is dead, ensure they cannot move and hide the interact text
+		// Stop movement if dead
 		if (IsDead)
 		{
-			controller.enabled = false;		// Disable controller to prevent movement
-			interactText.SetActive(false);	// Hide interact text
-			return;							// Exit update early
+			controller.enabled = false;
+			if (interactText != null) interactText.SetActive(false);
+			return;
 		}
 	}
 
-	// Handle trigger events for deadly shadows and flashlight zones
+	// Trigger events
 	private void OnTriggerEnter(Collider other)
 	{
-		// If player collides with a deadly shadow, they die and respawn
 		if (other.CompareTag("DeadlyShadow"))
 		{
 			if (!isInShadow && gameObject.layer == LayerMask.NameToLayer("Default"))
-			{
-				Debug.Log("Player hit a deadly shadow and will respawn.");
 				DieAndRespawn();
-			}
 		}
-		
-		// If player enters a flashlight zone, start taking damage over time
+
 		if (other.CompareTag("Flashlight") && gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
 			inFlashlightZone = true;
@@ -96,60 +89,54 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		// If player exits a flashlight zone, stop taking damage over time
 		if (other.CompareTag("Flashlight"))
 		{
 			inFlashlightZone = false;
 			StopDamageOverTime();
 		}
 	}
-	
+
 	private void DieAndRespawn()
 	{
 		if (!isInShadow)
 		{
-			// Inflict fatal damage to the player
 			GetComponent<PlayerHealth>().TakeDamage(999);
-			controller.enabled = false;                     // Disable controller to avoid issues during teleport
-			transform.position = respawnPoint.position;     // Teleport player to respawn point
-			velocity = Vector3.zero;                        // Reset velocity
-			controller.enabled = true;                      // Re-enable controller
+			controller.enabled = false;
+			transform.position = respawnPoint.position;
+			velocity = Vector3.zero;
+			controller.enabled = true;
 		}
 	}
 
+	// ---------------- DAMAGE ----------------
 	public void StartDamageOverTime()
 	{
-		// If a DOT coroutine is already running, stop it before starting a new one
-		if (dotCoroutine != null)
-			StopCoroutine(dotCoroutine);
-
-		dotCoroutine = StartCoroutine(DamageOverTime());	// Start the DOT coroutine
+		if (damageCoroutine != null) StopCoroutine(damageCoroutine);
+		damageCoroutine = StartCoroutine(DamageOverTime());
 	}
 
 	public void StopDamageOverTime()
 	{
-		// Stop the DOT coroutine if it's running
-		if (dotCoroutine != null)
+		if (damageCoroutine != null)
 		{
-			StopCoroutine(dotCoroutine);
-			dotCoroutine = null;
+			StopCoroutine(damageCoroutine);
+			damageCoroutine = null;
 		}
 	}
 
 	private IEnumerator DamageOverTime()
 	{
-		// Continuously apply damage while the player is in the flashlight zone
 		while (inFlashlightZone && gameObject.layer == LayerMask.NameToLayer("Default"))
 		{
-			GetComponent<PlayerHealth>().TakeDamage(dotAmount);		// Inflict damage
-			yield return new WaitForSeconds(dotInterval);			// Wait for the specified interval
+			GetComponent<PlayerHealth>().TakeDamage(dotAmount);
+			yield return new WaitForSeconds(interval);
 		}
-
-		dotCoroutine = null;	// Clear the coroutine reference when done
+		damageCoroutine = null;
 	}
 
+	// Kill player externally
 	public void KillPlayer()
 	{
-		DieAndRespawn();	// Public method to kill the player and respawn
+		DieAndRespawn();
 	}
 }
