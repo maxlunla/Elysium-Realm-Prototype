@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// This script allows the player to hide in designated hiding spots.
+// This script allows the player to hide in designated hiding spots and heal over time while hidden.
 public class HealingShadow : MonoBehaviour
 {
 	[Header("Player Reference")]
-	public GameObject player;
-	private PlayerController playerController;
-	public GameObject playerText;
+	public GameObject player;						// Reference to the player object
+	private PlayerController playerController;		// Reference to the player's controller script
+	public GameObject playerText;					// UI text to show when player can hide
 
 	[Header("Healing Settings")]
-	public float interval = 0.2f;
-	public int healAmount = 2;
+	public float interval = 0.2f;					// Interval between each heal tick
+	public int healAmount = 2;						// Amount of health to restore each tick
 
-	private bool isPlayerInZone = false;
-	private bool isHidden = false;
-	private Coroutine healCoroutine;
+	private bool isPlayerInZone = false;			// Is the player in the hiding zone?
+	private bool isHidden = false;					// Is the player currently hidden?
+	private Coroutine healCoroutine;				// Reference to the healing coroutine
 
 	void Start()
 	{
@@ -50,7 +50,7 @@ public class HealingShadow : MonoBehaviour
 		foreach (var r in renderers)
 			r.enabled = false;
 
-		// เริ่ม Heal Over Time
+		// Start Heal Over Time
 		if (healCoroutine == null)
 			healCoroutine = StartCoroutine(HealOverTime());
 
@@ -80,7 +80,7 @@ public class HealingShadow : MonoBehaviour
 
 		player.layer = LayerMask.NameToLayer("Default");
 
-		// หยุด Heal Over Time
+		// Stop healing coroutine if it's running
 		if (healCoroutine != null)
 		{
 			StopCoroutine(healCoroutine);
@@ -122,7 +122,7 @@ public class HealingShadow : MonoBehaviour
 		}
 	}
 
-	// ---------------- HEAL ----------------
+	// Coroutine to heal the player over time while hidden
 	private IEnumerator HealOverTime() 
 	{
 		while (isHidden && !playerController.IsDead)

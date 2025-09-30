@@ -22,13 +22,11 @@ public class PlayerController : MonoBehaviour
 	[Header("Respawn Settings")]
 	public Transform respawnPoint;
 
-	[Header("Damage / Heal Over Time")]
-	public float interval = 0.2f; // ใช้ร่วมกันทั้ง damage/heal
+	[Header("Damage Over Time")]
+	public float interval = 0.2f;		// Time interval for damage/heal ticks
 	public int dotAmount = 5;
-	public int healAmount = 5;
 
-	private Coroutine damageCoroutine;   // ✅ แยก coroutine damage
-	private Coroutine healCoroutine;     // ✅ แยก coroutine heal
+	private Coroutine damageCoroutine;
 
 	private bool inFlashlightZone = false;
 
@@ -96,6 +94,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	// Handle player death and respawn
 	private void DieAndRespawn()
 	{
 		if (!isInShadow)
@@ -108,13 +107,14 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	// ---------------- DAMAGE ----------------
+	// Damage over time handling
 	public void StartDamageOverTime()
 	{
 		if (damageCoroutine != null) StopCoroutine(damageCoroutine);
 		damageCoroutine = StartCoroutine(DamageOverTime());
 	}
 
+	// Stop damage over time
 	public void StopDamageOverTime()
 	{
 		if (damageCoroutine != null)
@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	// Coroutine for applying damage over time
 	private IEnumerator DamageOverTime()
 	{
 		while (inFlashlightZone && gameObject.layer == LayerMask.NameToLayer("Default"))

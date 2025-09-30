@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ground
   - Flashlight
+  - HealingLight
   layers:
   - Default
   - TransparentFX
