@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using TMPro;
-using System.Collections;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine.UIElements;
 
 // This script manages all battle actors in the scene and categorizes them into players and enemies
 public class BattleManager : MonoBehaviour

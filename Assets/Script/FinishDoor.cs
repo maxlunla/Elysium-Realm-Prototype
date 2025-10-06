@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement; // สำหรับ reload scene
+using UnityEngine.SceneManagement;
 
+// This script manages the finish door functionality, allowing the player to complete the level and restart the game.
 public class FinishDoor : MonoBehaviour
 {
 	[Header("Player Reference")]
-	public GameObject player;
-	private PlayerController playerController;
-	public GameObject playerText;       // ข้อความ "Finish [F]"
-	public GameObject winText;          // ข้อความ "YOU WIN Press [Y] to play again"
+	public GameObject player;					// Reference to the player object
+	private PlayerController playerController;	// Reference to the player's controller script
+	public GameObject playerText;				// Text to prompt player to finish level
+	public GameObject winText;					// Text to display when the player wins
 
 	private bool isPlayerInZone = false;
 	private bool isFinished = false;
@@ -17,19 +18,19 @@ public class FinishDoor : MonoBehaviour
 		playerController = player.GetComponent<PlayerController>();
 
 		if (winText != null)
-			winText.SetActive(false); // ซ่อนข้อความตอนเริ่มเกม
+			winText.SetActive(false);
 	}
 
 	void Update()
 	{
-		// เมื่อผู้เล่นอยู่ในโซนและกด F เพื่อจบด่าน
+		// Check if player is in the finish zone and presses F to finish the level
 		if (isPlayerInZone && Input.GetKeyDown(KeyCode.F) && !playerController.IsDead && !isFinished)
 		{
 			player.GetComponent<MeshRenderer>().enabled = false;
 			FinishLevel();
 		}
 
-		// ถ้าจบด่านแล้วและกด Y จะเริ่มใหม่
+		// If the level is finished, allow restart with Y key
 		if (isFinished && Input.GetKeyDown(KeyCode.Y))
 		{
 			RestartLevel();
@@ -46,17 +47,14 @@ public class FinishDoor : MonoBehaviour
 		if (winText != null)
 			winText.SetActive(true);
 
-		// หยุดการควบคุมของผู้เล่น (ถ้ามีระบบ movement)
+		// Disable player controls
 		if (playerController != null)
 			playerController.enabled = false;
-
-		// สามารถใส่ effect เพิ่ม เช่น particle หรือเสียง
-		Debug.Log("YOU WIN!");
 	}
 
 	private void RestartLevel()
 	{
-		// โหลด scene ปัจจุบันใหม่
+		// Reload the current scene to restart the level
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
@@ -66,7 +64,7 @@ public class FinishDoor : MonoBehaviour
 		{
 			isPlayerInZone = true;
 			if (playerText != null)
-				playerText.SetActive(true); // แสดงข้อความ "Finish [F]"
+				playerText.SetActive(true);	// Show prompt text when player enters the zone
 		}
 	}
 
@@ -76,7 +74,7 @@ public class FinishDoor : MonoBehaviour
 		{
 			isPlayerInZone = false;
 			if (playerText != null)
-				playerText.SetActive(false); // ซ่อนข้อความเมื่อออก
+				playerText.SetActive(false);	// Hide prompt text when player exits the zone
 		}
 	}
 }
